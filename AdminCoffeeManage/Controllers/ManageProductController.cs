@@ -94,5 +94,31 @@ namespace AdminCoffeeManage.Controllers
 
             return Ok(mess);
         }
+
+        // ================= UPLOAD IMAGE =================
+        [HttpPost("upload-image")]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("Không có file!");
+
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/products");
+
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+            var filePath = Path.Combine(folderPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var imageUrl = $"/images/products/{fileName}";
+
+            return Ok(new { imageUrl });
+        }
     }
 }

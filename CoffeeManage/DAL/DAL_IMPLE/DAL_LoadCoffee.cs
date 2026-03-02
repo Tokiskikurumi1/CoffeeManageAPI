@@ -108,9 +108,9 @@ namespace CoffeeManage.DAL.DAL_IMPLE
         }
 
         // ================= LOAD BY IDCOFFEE =================
-        public List<Coffee> GetCoffeeByID(int coffeeID)
+        public List<CoffeeDetail> GetCoffeeByID(int coffeeID)
         {
-            var list = new List<Coffee>();
+            var list = new List<CoffeeDetail>();
 
             using (SqlConnection conn = _db.GetConnection())
             {
@@ -124,13 +124,14 @@ namespace CoffeeManage.DAL.DAL_IMPLE
                     {
                         while (reader.Read())
                         {
-                            list.Add(new Coffee
+                            list.Add(new CoffeeDetail
                             {
                                 CoffeeID = reader.GetInt32("CoffeeID"),
                                 CoffeeName = reader.GetString("CoffeeName"),
                                 Price = reader.GetDecimal("Price"),
                                 ImageURL = reader.IsDBNull("ImageURL") ? null : reader.GetString("ImageURL"),
-                                CategoryID = reader.GetInt32("CategoryID")
+                                CategoryID = reader.GetInt32("CategoryID"),
+                                Status = Convert.ToInt32(reader["Status"])
                             });
                         }
                     }

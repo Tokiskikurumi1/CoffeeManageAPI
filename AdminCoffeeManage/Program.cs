@@ -40,6 +40,7 @@ namespace AdminCoffeeManage
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseCors("AllowFrontend");
             app.UseAuthorization();
 

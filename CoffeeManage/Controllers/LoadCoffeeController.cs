@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CoffeeManage.BLL.BLL_INTERFACES;
 using CoffeeManage.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CoffeeManage.Controllers
 {
@@ -51,7 +52,7 @@ namespace CoffeeManage.Controllers
             return Ok(products);
         }
         // ================= LOAD PRODUCT BY ID =================
-        [HttpGet("load-product-by-ID/{coffeeID}")]
+        [HttpGet("load-coffee-by-ID/{coffeeID}")]
         public IActionResult LoadByCoffeeID(int coffeeID)
         {
             var products = _coffeeBLL.GetCoffeeByID(coffeeID);

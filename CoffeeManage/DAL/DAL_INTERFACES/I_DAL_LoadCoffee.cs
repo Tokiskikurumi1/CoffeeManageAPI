@@ -6,6 +6,6 @@ namespace CoffeeManage.DAL.DAL_INTERFACES
         List<Category> GetAllCategory();
         List<Coffee> GetAllCoffee();
         List<Coffee> GetCoffeeByCategory(int categoryID);
-        List<Coffee> GetCoffeeByID(int coffeeID);
+        List<CoffeeDetail> GetCoffeeByID(int coffeeID);
     }
 }

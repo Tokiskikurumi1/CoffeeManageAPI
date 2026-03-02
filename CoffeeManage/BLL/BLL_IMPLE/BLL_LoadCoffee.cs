@@ -27,7 +27,7 @@ namespace CoffeeManage.BLL.BLL_IMPLE
         {
             return _coffeeDAL.GetCoffeeByCategory(categoryID);
         }
-        public List<Coffee> GetCoffeeByID(int coffeeID)
+        public List<CoffeeDetail> GetCoffeeByID(int coffeeID)
         {
             return _coffeeDAL.GetCoffeeByID(coffeeID);
         }
