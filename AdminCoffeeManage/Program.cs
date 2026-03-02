@@ -1,4 +1,10 @@
 
+using AdminCoffeeManage.BLL.BLL_IMPLE;
+using AdminCoffeeManage.BLL.BLL_INTERFACES;
+using AdminCoffeeManage.DAL;
+using AdminCoffeeManage.DAL.DAL_INTERFACES;
+using QLY_Coffee.Data;
+
 namespace AdminCoffeeManage
 {
     public class Program
@@ -14,7 +20,10 @@ namespace AdminCoffeeManage
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
-            // Add services to the container.
+            builder.Services.AddScoped<DBConnect>();
+
+            builder.Services.AddScoped<I_DAL_ManageProduct, DAL_ManageProduct>();
+            builder.Services.AddScoped<I_BLL_ManageProduct, BLL_ManageProduct>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

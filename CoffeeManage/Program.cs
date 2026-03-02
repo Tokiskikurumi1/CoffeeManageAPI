@@ -3,7 +3,7 @@ using CoffeeManage.BLL.BLL_IMPLE;
 using CoffeeManage.BLL.BLL_INTERFACES;
 using CoffeeManage.DAL.DAL_IMPLE;
 using CoffeeManage.DAL.DAL_INTERFACES;
-using QLY_LMS.Data;
+using QLY_Coffee.Data;
 
 namespace CoffeeManage
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 
-namespace QLY_LMS.Data
+namespace QLY_Coffee.Data
 {
     public class DBConnect
     {

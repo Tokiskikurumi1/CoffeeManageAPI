@@ -1,9 +1,9 @@
-﻿using QLY_LMS.Data;
-using static CoffeeManage.DAL.DAL_IMPLE.DAL_LoadCoffee;
+﻿using static CoffeeManage.DAL.DAL_IMPLE.DAL_LoadCoffee;
 using System.Data.SqlClient;
 using System.Data;
 using CoffeeManage.DAL.DAL_INTERFACES;
 using CoffeeManage.Models;
+using QLY_Coffee.Data;
 
 namespace CoffeeManage.DAL.DAL_IMPLE
 {
