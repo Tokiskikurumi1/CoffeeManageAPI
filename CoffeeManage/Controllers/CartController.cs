@@ -34,6 +34,25 @@ namespace CoffeeManage.Controllers
             return Ok("Thêm vào giỏ thành công");
         }
 
+        [HttpGet]
+        public IActionResult GetCart()
+        {
+            int userId = getUserID();
+
+            var cart = _cartBLL.GetCart(userId);
+
+            return Ok(cart);
+        }
+        [HttpPut("update")]
+        public IActionResult UpdateQuantity([FromBody] UpdateCartRequest model)
+        {
+            var result = _cartBLL.UpdateQuantity(model.BillDetailID, model.Quantity);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            return Ok(result.Message);
+        }
         [HttpPost("checkout")]
         public IActionResult Checkout()
         {

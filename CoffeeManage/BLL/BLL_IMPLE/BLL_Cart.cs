@@ -3,6 +3,7 @@ using CoffeeManage.BLL.BLL_INTERFACES;
 using CoffeeManage.DAL.DAL_INTERFACES;
 using CoffeeManage.Models;
 using CoffeeManage.Models.Request;
+using CoffeeManage.Models.Respone;
 
 namespace CoffeeManage.BLL.BLL_IMPLE
 {
@@ -17,10 +18,18 @@ namespace CoffeeManage.BLL.BLL_IMPLE
         {
             return _cartDAL.AddToCart(add, out mess);
         }
-
+        public List<CartItemResponse> GetCart(int userId)
+        {
+            return _cartDAL.GetCart(userId);
+        }
+        public (bool Success, string Message) UpdateQuantity(int billDetailId, int quantity)
+        {
+            return _cartDAL.UpdateQuantity(billDetailId, quantity);
+        }
         public (bool Success, string Message) Checkout(int userId)
         {
             return _cartDAL.Checkout(userId);
         }
+        
     }
 }

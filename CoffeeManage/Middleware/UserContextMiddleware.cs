@@ -13,7 +13,7 @@ public class UserContextMiddleware
     {
         if (context.User.Identity?.IsAuthenticated == true)
         {
-            var claim = context.User.FindFirst("userID");
+            var claim = context.User.FindFirst("UserID");
             if (claim != null)
             {
                 context.Items["UserID"] = int.Parse(claim.Value);
