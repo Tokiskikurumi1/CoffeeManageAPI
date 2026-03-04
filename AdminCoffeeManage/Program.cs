@@ -25,8 +25,10 @@ namespace AdminCoffeeManage
 
             builder.Services.AddScoped<I_BLL_ManageProduct, BLL_ManageProduct>();
             builder.Services.AddScoped<I_BLL_Bill, BLL_Bill>();
+            builder.Services.AddScoped<I_BLL_ManageCustomer, BLL_ManageCustomer>();
             builder.Services.AddScoped<I_DAL_ManageProduct, DAL_ManageProduct>();
             builder.Services.AddScoped<I_DAL_Bill, DAL_Bill>();
+            builder.Services.AddScoped<I_DAL_ManageCustomer, DAL_ManageCustomer>();
 
 
             builder.Services.AddControllers();

@@ -41,11 +41,12 @@ public class AuthController : ControllerBase
         int userID = rd.GetInt32(rd.GetOrdinal("UserID"));
         string FullName = rd.GetString(rd.GetOrdinal("FullName"));
         string email = rd.GetString(rd.GetOrdinal("Email"));
-        //string phone = rd.GetString(rd.GetOrdinal("Phone"));
-        //string gender = rd.GetString(rd.GetOrdinal("Gender"));
-        //string address = rd.GetString(rd.GetOrdinal("Address"));
+        bool status = rd.GetBoolean(rd.GetOrdinal("Status")); 
         string roleName = rd.GetString(rd.GetOrdinal("RoleName"));
-
+        if (!status)
+        {
+            return Unauthorized(new { message = "Tài khoản đã bị khóa" });
+        }
         string token = GenerateToken(userID, FullName, email, roleName);
 
         return Ok(new
