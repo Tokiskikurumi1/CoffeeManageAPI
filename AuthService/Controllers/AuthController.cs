@@ -41,9 +41,9 @@ public class AuthController : ControllerBase
         int userID = rd.GetInt32(rd.GetOrdinal("UserID"));
         string FullName = rd.GetString(rd.GetOrdinal("FullName"));
         string email = rd.GetString(rd.GetOrdinal("Email"));
-        string phone = rd.GetString(rd.GetOrdinal("Phone"));
-        string gender = rd.GetString(rd.GetOrdinal("Gender"));
-        string address = rd.GetString(rd.GetOrdinal("Address"));
+        //string phone = rd.GetString(rd.GetOrdinal("Phone"));
+        //string gender = rd.GetString(rd.GetOrdinal("Gender"));
+        //string address = rd.GetString(rd.GetOrdinal("Address"));
         string roleName = rd.GetString(rd.GetOrdinal("RoleName"));
 
         string token = GenerateToken(userID, FullName, email, roleName);

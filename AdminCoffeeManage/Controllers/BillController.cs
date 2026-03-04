@@ -15,14 +15,14 @@ namespace AdminCoffeeManage.Controllers
         }
 
         // GET: api/bill
-        [HttpGet]
+        [HttpGet("get-all-bill")]
         public IActionResult GetAllBill()
         {
             var data = _billBLL.GetAllBill();
             return Ok(data);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get-bill-by-id/{id}")]
         public IActionResult GetBillDetail(int id)
         {
             var data = _billBLL.GetBillDetail(id);
