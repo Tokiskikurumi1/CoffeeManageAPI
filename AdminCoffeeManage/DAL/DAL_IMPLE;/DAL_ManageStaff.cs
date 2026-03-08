@@ -63,24 +63,31 @@ namespace AdminCoffeeManage.DAL.DAL_IMPLE_
 
                     conn.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    try
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            list.Add(new Staff
+                            while (reader.Read())
                             {
-                                UserID = reader.GetInt32("UserID"),
-                                Username = reader.GetString("Username"),
-                                PasswordHash = reader.GetString("PasswordHash"),
-                                FullName = reader.GetString("FullName"),
-                                Gender = reader.GetString("Gender"),
-                                Address = reader.GetString("Address"),
-                                Phone = reader.GetString("Phone"),
-                                Email = reader.GetString("Email"),
-                                CreatedAt = reader.GetDateTime("CreatedAt"),
-                                Status = Convert.ToInt32(reader["Status"])
-                            });
+                                list.Add(new Staff
+                                {
+                                    UserID = reader.GetInt32("UserID"),
+                                    Username = reader.GetString("Username"),
+                                    PasswordHash = reader.GetString("PasswordHash"),
+                                    FullName = reader.GetString("FullName"),
+                                    Gender = reader.GetString("Gender"),
+                                    Address = reader.GetString("Address"),
+                                    Phone = reader.GetString("Phone"),
+                                    Email = reader.GetString("Email"),
+                                    CreatedAt = reader.GetDateTime("CreatedAt"),
+                                    Status = Convert.ToInt32(reader["Status"])
+                                });
+                            }
                         }
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new Exception(ex.Message);
                     }
                 }
             }

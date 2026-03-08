@@ -46,9 +46,12 @@ namespace CoffeeManage
             builder.Services.AddScoped<DBConnect>();
             builder.Services.AddScoped<I_BLL_LoadCoffee, BLL_LoadCoffee>();
             builder.Services.AddScoped<I_BLL_Cart, BLL_Cart>();
+            builder.Services.AddScoped<I_BLL_Customer, BLL_Customer>();
 
             builder.Services.AddScoped<I_DAL_LoadCoffee, DAL_LoadCoffee>();
             builder.Services.AddScoped<I_DAL_Cart, DAL_Cart>();
+            builder.Services.AddScoped<I_DAL_Customer, DAL_Customer>();
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
