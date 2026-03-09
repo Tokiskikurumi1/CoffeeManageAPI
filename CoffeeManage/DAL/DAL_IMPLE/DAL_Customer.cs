@@ -34,6 +34,7 @@ namespace CoffeeManage.DAL.DAL_IMPLE
                 {
                     UserID = Convert.ToInt32(reader["UserID"]),
                     Username = reader["Username"].ToString(),
+                    PasswordHash = reader["PasswordHash"].ToString(),
                     FullName = reader["FullName"].ToString(),
                     Gender = reader["Gender"].ToString(),
                     Phone = reader["Phone"].ToString(),
@@ -62,7 +63,7 @@ namespace CoffeeManage.DAL.DAL_IMPLE
             cmd.Parameters.AddWithValue("@Email", model.Email);
             cmd.Parameters.AddWithValue("@Address", model.Address);
             cmd.Parameters.AddWithValue("@Avatar", model.Avatar);
-
+            cmd.Parameters.AddWithValue("@PasswordHash", model.PasswordHash);
             conn.Open();
 
             using var reader = cmd.ExecuteReader();

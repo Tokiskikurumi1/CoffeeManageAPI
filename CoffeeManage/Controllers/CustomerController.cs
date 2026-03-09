@@ -71,5 +71,32 @@ namespace CoffeeManage.Controllers
 
             return Ok(result.Message);
         }
+
+        // ================= UPLOAD IMAGE =================
+        [HttpPost("customer-upload-image")]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("Không có file!");
+
+            var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/users");
+
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+            var filePath = Path.Combine(folderPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var imageUrl = $"/images/users/{fileName}";
+
+            return Ok(new { imageUrl });
+        }
     }
 }
+

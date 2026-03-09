@@ -50,7 +50,7 @@ namespace AdminCoffeeManage.Controllers
         // ===============================================================
         // =================== GET TOP PRODUCT ===========================
         // ===============================================================
-        [HttpGet("get-top-produc-all")]
+        [HttpGet("get-top-product-all")]
         public IActionResult GetAllProduct()
         {
             var data = _bll.GetAllProduct();
