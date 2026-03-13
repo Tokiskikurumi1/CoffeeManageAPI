@@ -16,41 +16,41 @@ namespace AdminCoffeeManage.DAL.DAL_IMPLE_
         }
 
         // ================= BILL DETAIL =================
-        public List<BillDetail> GetBillDetail(int billID)
-        {
-            var list = new List<BillDetail>();
+        //public List<BillDetail> GetBillDetail(int billID)
+        //{
+        //    var list = new List<BillDetail>();
 
-            using (SqlConnection conn = _db.GetConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand("ad_get_bill_detail", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@BillID", billID);
+        //    using (SqlConnection conn = _db.GetConnection())
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand("ad_get_bill_detail", conn))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@BillID", billID);
 
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            list.Add(new BillDetail
-                            {
-                                BillID = reader.GetInt32("BillID"),
-                                FullName = reader.GetString("FullName"),
-                                Phone = reader.GetString("Phone"),
-                                Address = reader.GetString("Address"),
-                                BillDate = reader.GetDateTime("BillDate"),
-                                CoffeeName = reader.GetString("CoffeeName"),
-                                Quantity = reader.GetInt32("Quantity"),
-                                UnitPrice = reader.GetDecimal("UnitPrice"),
-                                TotalAmount = reader.GetDecimal("TotalAmount")
-                            });
-                        }
-                    }
-                }
-            }
+        //            conn.Open();
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    list.Add(new BillDetail
+        //                    {
+        //                        BillID = reader.GetInt32("BillID"),
+        //                        FullName = reader.GetString("FullName"),
+        //                        Phone = reader.GetString("Phone"),
+        //                        Address = reader.GetString("Address"),
+        //                        BillDate = reader.GetDateTime("BillDate"),
+        //                        CoffeeName = reader.GetString("CoffeeName"),
+        //                        Quantity = reader.GetInt32("Quantity"),
+        //                        UnitPrice = reader.GetDecimal("UnitPrice"),
+        //                        TotalAmount = reader.GetDecimal("TotalAmount")
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
 
-            return list;
-        }
+        //    return list;
+        //}
 
         // ================= ALL CUSTOMER =================
         public List<Customer> GetAllCustomer()

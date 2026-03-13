@@ -51,9 +51,10 @@ namespace AdminCoffeeManage.DAL.DAL_IMPLE_
         }
 
         // ================= GET BILL DETAIL =================
-        public List<BillDetail> GetBillDetail(int billId)
+        public BillDetailResponse GetBillDetail(int billId)
         {
-            var list = new List<BillDetail>();
+            var products = new List<BillDetail>();
+            var logs = new List<BillLog>();
 
             using var conn = _db.GetConnection();
             using var cmd = new SqlCommand("ad_get_bill_detail", conn);
@@ -62,28 +63,46 @@ namespace AdminCoffeeManage.DAL.DAL_IMPLE_
             cmd.Parameters.AddWithValue("@BillID", billId);
 
             conn.Open();
+
             using var reader = cmd.ExecuteReader();
 
-            if (!reader.HasRows)
-                return list;
-
+            // ================= PRODUCTS =================
             while (reader.Read())
             {
-                list.Add(new BillDetail
+                products.Add(new BillDetail
                 {
                     BillID = Convert.ToInt32(reader["BillID"]),
-                    FullName = reader["FullName"].ToString(),
+                    CustomerName = reader["CustomerName"].ToString(),
                     Phone = reader["Phone"].ToString(),
                     Address = reader["Address"].ToString(),
                     BillDate = Convert.ToDateTime(reader["BillDate"]),
                     CoffeeName = reader["CoffeeName"].ToString(),
                     Quantity = Convert.ToInt32(reader["Quantity"]),
                     UnitPrice = Convert.ToDecimal(reader["UnitPrice"]),
+                    SubTotal = Convert.ToDecimal(reader["SubTotal"]),
                     TotalAmount = Convert.ToDecimal(reader["TotalAmount"])
                 });
             }
 
-            return list;
+            // ================= LOGS =================
+            if (reader.NextResult())
+            {
+                while (reader.Read())
+                {
+                    logs.Add(new BillLog
+                    {
+                        StaffName = reader["StaffName"].ToString(),
+                        ActionType = reader["ActionType"].ToString(),
+                        ActionTime = Convert.ToDateTime(reader["ActionTime"])
+                    });
+                }
+            }
+
+            return new BillDetailResponse
+            {
+                Products = products,
+                Logs = logs
+            };
         }
     }
 }

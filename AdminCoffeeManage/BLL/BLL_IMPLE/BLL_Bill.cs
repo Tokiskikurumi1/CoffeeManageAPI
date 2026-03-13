@@ -16,7 +16,7 @@ namespace AdminCoffeeManage.BLL.BLL_IMPLE
             return _bill.GetAllBill();
         }
 
-        public List<BillDetail> GetBillDetail(int billId)
+        public BillDetailResponse GetBillDetail(int billId)
         {
             return _bill.GetBillDetail(billId);
         }

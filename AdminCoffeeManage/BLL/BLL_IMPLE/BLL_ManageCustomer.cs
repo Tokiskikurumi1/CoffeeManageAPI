@@ -13,10 +13,10 @@ namespace AdminCoffeeManage.BLL.BLL_IMPLE
             _dal = dal;
         }
 
-        public List<BillDetail> GetBillDetail(int billID)
-        {
-            return _dal.GetBillDetail(billID);
-        }
+        //public List<BillDetail> GetBillDetail(int billID)
+        //{
+        //    return _dal.GetBillDetail(billID);
+        //}
 
         public List<Customer> GetAllCustomer()
         {

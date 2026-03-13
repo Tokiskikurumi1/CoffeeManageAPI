@@ -27,7 +27,7 @@ namespace AdminCoffeeManage.Controllers
         {
             var data = _billBLL.GetBillDetail(id);
 
-            if (data == null || data.Count == 0)
+            if (data == null || data.Products.Count == 0)
                 return NotFound("Không tìm thấy hóa đơn");
 
             return Ok(data);

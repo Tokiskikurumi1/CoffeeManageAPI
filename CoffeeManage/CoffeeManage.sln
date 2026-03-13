@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "..\Gateway\Gatew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthService", "..\AuthService\AuthService.csproj", "{9C027066-2453-4CBA-8DDA-88455D8C2A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminCoffeeManage", "..\AdminCoffeeManage\AdminCoffeeManage.csproj", "{5606EB69-A1A0-4C4B-864C-A403F8C89E74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminCoffeeManage", "..\AdminCoffeeManage\AdminCoffeeManage.csproj", "{5606EB69-A1A0-4C4B-864C-A403F8C89E74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffCoffee", "..\StaffCoffee\StaffCoffee.csproj", "{EF95D874-D2B3-4118-99E0-22DF1BE40ABA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5606EB69-A1A0-4C4B-864C-A403F8C89E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5606EB69-A1A0-4C4B-864C-A403F8C89E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5606EB69-A1A0-4C4B-864C-A403F8C89E74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF95D874-D2B3-4118-99E0-22DF1BE40ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF95D874-D2B3-4118-99E0-22DF1BE40ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF95D874-D2B3-4118-99E0-22DF1BE40ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF95D874-D2B3-4118-99E0-22DF1BE40ABA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

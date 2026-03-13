@@ -15,16 +15,16 @@ namespace AdminCoffeeManage.Controllers
         }
 
         // ================= GET BILL DETAIL =================
-        [HttpGet("get-bill-detail/{billID}")]
-        public IActionResult GetBillDetail(int billID)
-        {
-            var data = _bll.GetBillDetail(billID);
+        //[HttpGet("get-bill-detail/{billID}")]
+        //public IActionResult GetBillDetail(int billID)
+        //{
+        //    var data = _bll.GetBillDetail(billID);
 
-            if (data == null || data.Count == 0)
-                return NotFound("Không tìm thấy hóa đơn!");
+        //    if (data == null || data.Count == 0)
+        //        return NotFound("Không tìm thấy hóa đơn!");
 
-            return Ok(data);
-        }
+        //    return Ok(data);
+        //}
 
         // ================= GET ALL CUSTOMER =================
         [HttpGet("get-all-customer")]
