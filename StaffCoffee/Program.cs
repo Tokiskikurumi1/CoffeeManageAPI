@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using StaffCoffee.BLL.BLL_IMPLE;
 using StaffCoffee.BLL.BLL_INTERFACES;
@@ -16,6 +15,8 @@ namespace StaffCoffee
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            /* ================= JWT ================= */
+
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -29,33 +30,55 @@ namespace StaffCoffee
                         ValidIssuer = "cfm_api",
                         ValidAudience = "cfm_user",
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes("THIS_IS_SUPER_LONG_JWT_SECRET_KEY_1234567890"))   //  PHẢI GIỐNG AuthService + Gateway
+                            Encoding.UTF8.GetBytes("THIS_IS_SUPER_LONG_JWT_SECRET_KEY_1234567890"))
                     };
                 });
 
             builder.Services.AddAuthorization();
-            // ===== ĐĂNG KÝ SERVICE + DAL =====
+
+            /* ================= CORS ================= */
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
+            /* ================= SERVICE ================= */
+
             builder.Services.AddScoped<DBConnect>();
-            builder.Services.AddControllers();
             builder.Services.AddScoped<I_BLL_StaffBill, BLL_StaffBill>();
             builder.Services.AddScoped<I_DAL_StaffBill, DAL_StaffBill>();
+
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            /* ================= DEV ================= */
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseMiddleware<UserContextMiddleware>();
-            app.UseAuthorization();
+            /* ================= PIPELINE ================= */
 
+            app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
+
+            app.UseAuthentication();
+
+            app.UseMiddleware<UserContextMiddleware>();
+
+            app.UseAuthorization();
 
             app.MapControllers();
 

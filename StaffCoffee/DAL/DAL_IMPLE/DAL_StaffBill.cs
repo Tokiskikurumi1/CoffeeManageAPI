@@ -62,6 +62,13 @@ namespace StaffCoffee.DAL.DAL_IMPLE
             {
                 list.Add(new StaffBillDetail
                 {
+                    CustomerName = reader["CustomerName"].ToString(),
+                    Phone = reader["Phone"].ToString(),
+                    Address = reader["Address"].ToString(),
+
+                    Status = Convert.ToInt32(reader["Status"]),
+                    StatusName = reader["StatusName"].ToString(),
+
                     CoffeeName = reader["CoffeeName"].ToString(),
                     Quantity = Convert.ToInt32(reader["Quantity"]),
                     UnitPrice = Convert.ToDecimal(reader["UnitPrice"]),
