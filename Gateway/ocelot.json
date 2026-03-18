@@ -1,5 +1,6 @@
 ﻿{
   "Routes": [
+    // ================= AUTH =================
     {
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "UpstreamPathTemplate": "/auth/{everything}",
@@ -11,128 +12,83 @@
         }
       ]
     },
-    {
-      "DownstreamPathTemplate": "/api/LoadCoffee/{everything}",
-      "UpstreamPathTemplate": "/LoadCoffee/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7027
-        }
-      ],
 
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
-    },
-    {
-      "DownstreamPathTemplate": "/api/Video/{everything}",
-      "UpstreamPathTemplate": "/teacherCourseVideo/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7295
-        }
+    // ===================================================
+    // ================= ADMIN ===========================
+    // ===================================================
 
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
-    },
+
+    // ================= MANAGE BILL =================
     {
-      "DownstreamPathTemplate": "/api/Assignment/{everything}",
-      "UpstreamPathTemplate": "/teacherAssignmentVideo/{everything}",
+      "DownstreamPathTemplate": "/api/Bill/{everything}",
+      "UpstreamPathTemplate": "/admin/manageBill/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 7114
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
     },
+
+    // ================= MANAGE CUSTOMER =================
     {
-      "DownstreamPathTemplate": "/api/TManageStudent/{everything}",
-      "UpstreamPathTemplate": "/teacherManageStudent/{everything}",
+      "DownstreamPathTemplate": "/api/ManageCustomer/{everything}",
+      "UpstreamPathTemplate": "/admin/manageCustomer/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 7114
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
     },
+
+    // ================= MANAGE PRODUCT =================
     {
-      "DownstreamPathTemplate": "/api/Question/{everything}",
-      "UpstreamPathTemplate": "/teacherManageQuestion/{everything}",
+      "DownstreamPathTemplate": "/api/ManageProduct/{everything}",
+      "UpstreamPathTemplate": "/admin/manageProduct/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 7114
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
     },
+
+    // ================= MANAGE REPORT =================
     {
-      "DownstreamPathTemplate": "/api/Answer/{everything}",
-      "UpstreamPathTemplate": "/teacherManageAnswer/{everything}",
+      "DownstreamPathTemplate": "/api/ManageReport/{everything}",
+      "UpstreamPathTemplate": "/admin/manageReport/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 7114
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
     },
+
+    // ================= MANAGE STAFF =================
     {
-      "DownstreamPathTemplate": "/api/Info/{everything}",
-      "UpstreamPathTemplate": "/teacherInfo/{everything}",
+      "DownstreamPathTemplate": "/api/ManageStaff/{everything}",
+      "UpstreamPathTemplate": "/admin/manageStaff/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7295
+          "Port": 7114
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
     },
-    {
-      "DownstreamPathTemplate": "/api/TUpdatePass/{everything}",
-      "UpstreamPathTemplate": "/teacherUpdatePass/{everything}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7295
-        }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
-    }
+
+    // ===================================================
+    // ================= STAFF ===========================
+    // ===================================================
   ],
-  "GlobalConfiguration": {}
+
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7205"
+  }
 }

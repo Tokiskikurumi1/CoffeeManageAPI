@@ -53,8 +53,11 @@ namespace StaffCoffee
             builder.Services.AddScoped<DBConnect>();
             builder.Services.AddScoped<I_BLL_StaffBill, BLL_StaffBill>();
             builder.Services.AddScoped<I_BLL_StaffDashBoard, BLL_StaffDashBoard>();
+            builder.Services.AddScoped<I_BLL_StaffAccount, BLL_StaffAccount>();
+
             builder.Services.AddScoped<I_DAL_StaffBill, DAL_StaffBill>();
             builder.Services.AddScoped<I_DAL_StaffDashBoard, DAL_StaffDashBoard>();
+            builder.Services.AddScoped<I_DAL_StaffAccount, DAL_StaffAccount>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

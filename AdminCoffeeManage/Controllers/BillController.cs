@@ -22,6 +22,8 @@ namespace AdminCoffeeManage.Controllers
             return Ok(data);
         }
 
+        // GET BILL DETAIL
+
         [HttpGet("get-bill-by-id/{id}")]
         public IActionResult GetBillDetail(int id)
         {
