@@ -13,9 +13,9 @@
       ]
     },
 
-    // ===================================================
-    // ================= ADMIN ===========================
-    // ===================================================
+    // ======================================================================================================
+    // ================================================ ADMIN ===============================================
+    // ======================================================================================================
 
 
     // ================= MANAGE BILL =================
@@ -83,12 +83,100 @@
       ]
     },
 
-    // ===================================================
-    // ================= STAFF ===========================
-    // ===================================================
+    // ======================================================================================================
+    // ================================================ STAFF ===============================================
+    // ======================================================================================================
+    {
+      "DownstreamPathTemplate": "/api/DashBoard/{everything}",
+      "UpstreamPathTemplate": "/staff/dashboard/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ManageBill/{everything}",
+      "UpstreamPathTemplate": "/staff/manageBill/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Account/{everything}",
+      "UpstreamPathTemplate": "/staff/account/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7203
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+
+    // ======================================================================================================
+    // ================================================ CUSTOMER ============================================
+    // ======================================================================================================
+    {
+      // ================= PUBLIC (KHÔNG AUTH) =================
+      "DownstreamPathTemplate": "/api/LoadCoffee/{everything}",
+      "UpstreamPathTemplate": "/customer/product/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7027
+        }
+      ]
+    },
+    {
+      // ================= CART (CÓ AUTH) =================
+      "DownstreamPathTemplate": "/api/Cart/{everything}",
+      "UpstreamPathTemplate": "/customer/cart/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7027
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      // ================= PROFILE / CUSTOMER =================
+      "DownstreamPathTemplate": "/api/Customer/{everything}",
+      "UpstreamPathTemplate": "/customer/profile/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7027
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    }
   ],
 
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7205"
+    "BaseUrl": "https://localhost:7129"
   }
 }
