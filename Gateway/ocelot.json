@@ -133,7 +133,19 @@
     // ================================================ CUSTOMER ============================================
     // ======================================================================================================
     {
-      // ================= PUBLIC (KHÔNG AUTH) =================
+      // ================= LOAD TOTAL =================
+      "DownstreamPathTemplate": "/api/TotalProduct/{everything}",
+      "UpstreamPathTemplate": "/customer/TotalProduct/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7027
+        }
+      ]
+    },
+    {
+      // ================= LOAD COFFEE =================
       "DownstreamPathTemplate": "/api/LoadCoffee/{everything}",
       "UpstreamPathTemplate": "/customer/product/{everything}",
       "DownstreamScheme": "https",
@@ -145,7 +157,7 @@
       ]
     },
     {
-      // ================= CART (CÓ AUTH) =================
+      // ================= CART =================
       "DownstreamPathTemplate": "/api/Cart/{everything}",
       "UpstreamPathTemplate": "/customer/cart/{everything}",
       "DownstreamScheme": "https",
